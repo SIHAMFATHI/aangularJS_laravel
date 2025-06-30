@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS to Laravel API</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+  <h2>Send to Laravel API</h2>
+  <input type="text" ng-model="userPrompt" placeholder="Type something">
+  <button ng-click="sendData()">Send</button>
+
+  <p>Response: {{ responseText }}</p>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('MainCtrl', function($scope, $http) {
+      $scope.sendData = function() {
+        $http.post('http://127.0.0.1:8000/api/send-data', {
+          prompt: $scope.userPrompt
+        }).then(function(response) {
+          $scope.responseText = response.data.message;
+        }, function(error) {
+          console.error(error);
+          $scope.responseText = 'Error: ' + error.status;
+        });
+      };
+    });
+  </script>
+
+</body>
+</html>
