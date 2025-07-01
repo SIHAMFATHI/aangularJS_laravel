@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="crmApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body ng-controller="AuthController">
+    <div class="login-container">
+        <h2>Login</h2>
+        <form ng-submit="login()">
+            <input type="email" ng-model="loginData.email" placeholder="Email" required><br>
+            <input type="password" ng-model="loginData.password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        <a href="register.html">Register</a>
+    </div>
+</body>
+</html>
